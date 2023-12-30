@@ -19,6 +19,11 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.getAllEmployees());
     }
 
+    @GetMapping("/employees/page")
+    public ResponseEntity<?> getEmployeePage(@RequestParam int page,@RequestParam int size) {
+        return ResponseEntity.ok(employeeService.getEmployeePage(page,size));
+    }
+
     @GetMapping("/employee")
     public ResponseEntity<?> getEmployee(@RequestParam String type,@RequestParam String parameter) {
         return ResponseEntity.ok(employeeService.getEmployee(type,parameter));

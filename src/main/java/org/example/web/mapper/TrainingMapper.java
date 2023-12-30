@@ -1,11 +1,10 @@
 package org.example.web.mapper;
 
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.example.web.entity.Employee;
 import org.apache.ibatis.annotations.Mapper;
+import org.example.web.entity.Training;
 
 @Mapper
-public interface EmployeeMapper extends BaseMapper<Employee> {
-
-
+public interface TrainingMapper extends BaseMapper<Training> {
 }

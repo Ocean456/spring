@@ -2,6 +2,8 @@ package org.example.web.service;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import jakarta.annotation.Resource;
 import org.example.web.entity.Employee;
 import org.example.web.mapper.EmployeeMapper;
@@ -16,6 +18,11 @@ public class EmployeeService {
 
     public List<Employee> getAllEmployees() {
         return employeeMapper.selectList(null);
+    }
+
+    public List<Employee> getEmployeePage(int page, int size) {
+        Page<Employee> employeePage = new Page<>(page, size);
+        return employeeMapper.selectPage(employeePage, null).getRecords();
     }
 
     public Employee createEmployee(Employee employee) {
