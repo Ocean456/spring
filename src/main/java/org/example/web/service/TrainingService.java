@@ -2,8 +2,11 @@ package org.example.web.service;
 
 
 import jakarta.annotation.Resource;
+import org.example.web.entity.Training;
 import org.example.web.mapper.TrainingMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TrainingService {
@@ -11,4 +14,19 @@ public class TrainingService {
     private TrainingMapper trainingMapper;
 
 
+    public List<Training> getAllTrainings() {
+        return trainingMapper.selectList(null);
+    }
+
+    public Boolean createTraining(Training training) {
+        return trainingMapper.insert(training) > 0;
+    }
+
+    public Boolean updateTraining(Training training) {
+        return trainingMapper.updateById(training) > 0;
+    }
+
+    public Boolean deleteTraining(Integer trainingId) {
+        return trainingMapper.deleteById(trainingId) > 0;
+    }
 }

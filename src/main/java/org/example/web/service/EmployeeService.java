@@ -20,9 +20,9 @@ public class EmployeeService {
         return employeeMapper.selectList(null);
     }
 
-    public List<Employee> getEmployeePage(int page, int size) {
+    public IPage<Employee> getEmployeePage(int page, int size) {
         Page<Employee> employeePage = new Page<>(page, size);
-        return employeeMapper.selectPage(employeePage, null).getRecords();
+        return employeeMapper.selectPage(employeePage, null);
     }
 
     public Employee createEmployee(Employee employee) {
@@ -40,5 +40,9 @@ public class EmployeeService {
         QueryWrapper<Employee> queryWrapper = new QueryWrapper<>();
         queryWrapper.like(type, parameter);
         return employeeMapper.selectList(queryWrapper);
+    }
+
+    public Boolean deleteEmployee(Integer employeeId) {
+        return employeeMapper.deleteById(employeeId) > 0;
     }
 }

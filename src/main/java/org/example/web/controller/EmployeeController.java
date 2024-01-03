@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class EmployeeController {
 
+
     @Resource
     private EmployeeService employeeService;
 
@@ -39,5 +40,9 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.updateEmployee(employee));
     }
 
+    @DeleteMapping("/employee")
+    public ResponseEntity<?> deleteEmployee(@RequestParam Integer employeeId) {
+        return ResponseEntity.ok(employeeService.deleteEmployee(employeeId));
+    }
 
 }
