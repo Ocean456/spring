@@ -20,6 +20,7 @@ public class TrainingController {
 
     @PostMapping("/training")
     public ResponseEntity<?> createTraining(@RequestBody Training training) {
+        System.out.println(training.getTrainingId());
         return ResponseEntity.ok(trainingService.createTraining(training));
     }
 
@@ -28,8 +29,11 @@ public class TrainingController {
         return ResponseEntity.ok(trainingService.updateTraining(training));
     }
 
+
+
     @DeleteMapping("/training")
     public ResponseEntity<?> deleteTraining(@RequestParam Integer trainingId) {
         return ResponseEntity.ok(trainingService.deleteTraining(trainingId));
     }
+
 }

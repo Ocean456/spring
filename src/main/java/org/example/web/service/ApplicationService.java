@@ -25,4 +25,29 @@ public class ApplicationService {
         application.setApplicationStatus(applicationStatus);
         return applicationMapper.updateById(application) == 1;
     }
+
+
+    public void insertApplication(Application application) {
+        application.setApplicationStatus(0);
+        applicationMapper.insert(application);
+
+    }
+
+    public ApplicationService(ApplicationMapper applicationMapper) {
+        this.applicationMapper = applicationMapper;
+    }
+
+    public int count_Application() {
+        return applicationMapper.countApplication();
+    }
+
+    public int status(String id) {
+        QueryWrapper<Application> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("EmployeeID", id);
+        return applicationMapper.selectOne(queryWrapper).getApplicationStatus();
+    }
+
+    public Boolean deleteApplication(String applicationId) {
+        return applicationMapper.deleteById(applicationId) > 0;
+    }
 }

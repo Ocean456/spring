@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @TableName("attendance")
 public class Attendance {
@@ -14,7 +16,7 @@ public class Attendance {
     @TableField("EmployeeId")
     private Integer employeeId;
     @TableField("AttendanceDate")
-    private String attendanceDate;
+    private Date attendanceDate;
     @TableField("AttendanceStatus")
     private String attendanceStatus;
     @TableField("AttendanceTime")

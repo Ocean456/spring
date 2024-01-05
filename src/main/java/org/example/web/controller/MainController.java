@@ -36,4 +36,23 @@ public class MainController {
             return ResponseEntity.ok(response);
         }
     }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody Account account) {
+        if (mainService.createAccount(account)) {
+            return ResponseEntity.ok(Collections.singletonMap("message", "Register successfully"));
+        } else {
+            return ResponseEntity.status(500).body(Collections.singletonMap("message", "Register failed"));
+        }
+    }
+    @PostMapping("/updateuser")
+    public void update(@RequestBody Map<String,String> request){
+        String username=request.get("username");
+        String password=request.get("password");
+        mainService.update_user(username,password);
+    }
+    @GetMapping("/getpassword")
+    public String get(String username){
+        return mainService.get_password(username);
+    }
 }
