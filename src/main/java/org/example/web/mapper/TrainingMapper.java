@@ -13,4 +13,7 @@ import java.util.List;
 public interface TrainingMapper extends BaseMapper<Training> {
     @Select("select training. *,EmployeeName from training join employee on employee.EmployeeID = training.EmployeeID ")
     List<TrainingForm> getAllTrainings();
+
+    @Select("select training. *,EmployeeName from training join employee on employee.EmployeeID = training.EmployeeID where trainingName like CONCAT('%',#{trainingName},'%')")
+    List<TrainingForm> getTrainByName(String trainingName);
 }
