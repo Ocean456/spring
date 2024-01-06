@@ -36,4 +36,10 @@ public class TrainingController {
         return ResponseEntity.ok(trainingService.deleteTraining(trainingId));
     }
 
+
+    @GetMapping("/training")
+    public ResponseEntity<?> getTraining(@RequestParam String trainingName) {
+        return ResponseEntity.ok(trainingService.getTraining(trainingName));
+    }
+
 }

@@ -1,6 +1,7 @@
 package org.example.web.service;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import jakarta.annotation.Resource;
 import org.example.web.dto.TrainingForm;
 import org.example.web.entity.Training;
@@ -30,5 +31,12 @@ public class TrainingService {
 
     public Boolean deleteTraining(Integer trainingId) {
         return trainingMapper.deleteById(trainingId) > 0;
+    }
+
+    public List<Training> getTraining(String trainingName) {
+        QueryWrapper<Training> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("trainingName", trainingName);
+        return trainingMapper.selectList(queryWrapper);
+
     }
 }
