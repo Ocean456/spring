@@ -6,6 +6,8 @@ import org.example.web.entity.Account;
 import org.example.web.mapper.AccountMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class MainService {
@@ -41,8 +43,8 @@ public class MainService {
     public String get_password(String username){
         QueryWrapper<Account> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("username", username);
-        Account account=accountMapper.selectOne(queryWrapper);
-        System.out.println(account);
+        List<Account> accounts=accountMapper.selectList(queryWrapper);
+        Account account=accounts.getFirst();
         return account.getPassword();
     }
 }

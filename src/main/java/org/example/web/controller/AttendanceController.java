@@ -24,7 +24,6 @@ public class AttendanceController {
     @GetMapping("/attendances")
     public ResponseEntity<?> getAllAttendances() {
         return ResponseEntity.ok(attendanceService.getAllAttendances());
-
     }
 
     @PostMapping("/attendance")
@@ -37,11 +36,11 @@ public class AttendanceController {
         return ResponseEntity.ok(attendanceService.updateAttendance(attendance));
     }
 
-
     @GetMapping("/attendance")
     public List<Date> getAttendanceByEmployeeId(@RequestParam Integer employeeId) {
         return attendanceService.getAttendanceByEmployeeId(employeeId);
     }
+
 
     @GetMapping("/config/attendance")
     public ResponseEntity<?> getAttendanceConfig() {
@@ -52,4 +51,11 @@ public class AttendanceController {
     public ResponseEntity<?> updateAttendanceConfig(@RequestBody Config config) {
         return ResponseEntity.ok(configMapper.updateById(config));
     }
+
+
+    @GetMapping("/attendance/set")
+    public ResponseEntity<?> setAttendance(@RequestParam String employeePhone) {
+        return ResponseEntity.ok(attendanceService.setAttendance(employeePhone));
+    }
+
 }
